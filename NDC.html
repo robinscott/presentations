@@ -15,10 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/tomorrow-night-bright.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -63,9 +63,190 @@
 				</section>
 
 				<section>
-					<h3>Look at a few of the interesting </h3>
+					<section data-transition="fade">
+						<p>Ability to run the output as a tooltip</p>
+						<img src="images/tooltip1.jpg" style="width: 80%">
+					</section>
+					<section data-transition="fade">
+						<a href="http://www.agilelearner.com/presentation/5">http://www.agilelearner.com/presentation/5</a>
+						<img src="images/tooltip2.jpg" style="width: 80%">
+					</section>
 				</section>
 
+				<section>
+					<section id="fragments">
+						<h3>Look at a few of the interesting topics covered</h3>
+						<ol>
+							<li class="fragment">The use of <strong><em>Use strict</em></strong></li>
+							<li class="fragment">White space and semicolons</li>
+							<li class="fragment">Hoisting</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<h2>1. The use of "use strict"</h2>
+					<img src="images/teachers-dirty-look.jpg" style="width: 30%">
+				</section>
+
+				<section>
+					<section data-transition="fade">
+						<p style="text-align: left">Declaring a variable in global scope is acceptable in JS but not considered best practice.</p>
+						<br>
+						<pre><code data-trim>
+var foo = function() {
+  var local1 = 7;
+  local2 = 8;
+  
+  console.log(local1);
+  console.log(local2);
+}
+
+foo();
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<h2>&nbsp;</h2>
+						<p style="text-align: left">Including <strong>"use strict"</strong> will cause any variables declared in the global scope to throw an error.</p>
+						<br>
+						<pre><code data-trim>
+"use strict";
+var foo = function() {
+  var local1 = 7;
+  local2 = 8; //no var - use strict option will give an error on this line.
+  
+  console.log(local1);
+  console.log(local2);
+}
+
+foo();
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h2>3. White space and semicolons in JavaScript</h2>
+					<img src="images/semicolon.jpg">
+				</section>
+
+				<section>
+					<section data-transition="fade">
+						<p style="text-align: left">White space is ignored in JS.</p>
+						<p style="text-align: left">But a semicolon will be added at the end of a stand alone expression even if not intended.</p>
+						<br>
+						<pre><code data-trim>
+var foo = function(n) {
+  if(n > 5) {
+    return n;
+  } else {
+    return
+        n * 2;
+  }
+}
+
+console.log(foo(6)); //Returns 6
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<p style="text-align: left">Second console log returns.</p>
+						<p style="text-align: left">Because <strong>return</strong> is a stand alone expression JS inserts a semicolon.</p>
+						<br>
+						<pre><code data-trim>
+var foo = function(n) {
+  if(n > 5) {
+    return n;
+  } else {
+    return
+        n * 2; //JS puts a ; at the end of return.
+  }
+}
+
+console.log(foo(6)); //Returns 6
+console.log(foo(2));
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h2>3. Hoisting</h2>
+					<img src="images/javascript_hoisting_explained.jpg">
+				</section>
+
+				<section>
+					<section data-transition="fade">
+						<p style="text-align: left">Behind the scenes, variable declarations are 'hoisted' to the top of the current scope.</p>
+						<p style="text-align: left">If the variable has been initialised then it will be set to <code>undefined</code> when it is 'hoisted'.</p>
+						<br>
+						<pre><code data-trim>
+var myVariable = "global variable";
+
+var foo = function() {
+    console.log(myVariable);
+}
+
+foo(); //global variable
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<p style="text-align: left">If we add a local variable below with the same name, it is now <code>undefined</code>.</p>
+						<br>
+						<pre><code data-trim>
+var myVariable = "global variable";
+
+var foo = function() {
+    console.log(myVariable);
+
+    var myVariable = "local variable";
+}
+
+foo(); //undefined
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<p style="text-align: left">The declaration of <strong>myVariable</strong> has been 'hoisted' and logs as <code>undefined</code>.</p>
+						<p style="text-align: left">Behind the scenes this has happened ...</p>
+						<br>
+						<pre><code data-trim>
+var myVariable = "global variable";
+
+var foo = function() {
+    //var myVariable; - hoisted and undefined.
+    console.log(myVariable);
+
+    /*var*/ myVariable = "local variable"; //myVariable initialised.
+}
+
+foo(); //undefined
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<p style="text-align: left">Function declarations are also 'hoisted' to the top.</p>
+						<br>
+						<pre><code data-trim>
+myFunction(); //foo
+
+function myFunction() {
+	console.log("foo");	
+}
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<p style="text-align: left">But function expressions are <em>not</em> 'hoisted'.</p>
+						<br>
+						<pre><code data-trim>
+myFunction(); //Error!
+
+var myFunction = function() {
+	console.log("foo");	
+}
+						</code></pre>
+					</section>
+					<section data-transition="fade">
+						<h2>Takeaway</h2>
+						<img src="images/noodles.jpg">
+						<p>Declare all variables at the top of the current scope.</p>
+					</section>
+				</section>
 
 <!-- 				<section>
 	<h1>Reveal.js</h1>
