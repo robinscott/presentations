@@ -24,6 +24,12 @@
 		<script>
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
+		<style type="text/css">
+			.reveal pre {
+				font-size: 0.75em;
+				width: 120%;
+			}
+		</style>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -80,16 +86,18 @@
 							<li class="fragment">The use of <strong><em>Use strict</em></strong></li>
 							<li class="fragment">White space and semicolons</li>
 							<li class="fragment">Hoisting</li>
+							<li class="fragment">Parameters</li>
 						</ol>
 					</section>
 				</section>
 
 				<section>
-					<h2>1. The use of "use strict"</h2>
-					<img src="images/teachers-dirty-look.jpg" style="width: 30%">
-				</section>
 
-				<section>
+					<section>
+						<h2>1. The use of "use strict"</h2>
+						<img src="images/teachers-dirty-look.jpg" style="width: 30%">
+					</section>
+
 					<section data-transition="fade">
 						<p style="text-align: left">Declaring a variable in global scope is acceptable in JS but not considered best practice.</p>
 						<br>
@@ -125,11 +133,12 @@ foo();
 				</section>
 
 				<section>
-					<h2>3. White space and semicolons in JavaScript</h2>
-					<img src="images/semicolon.jpg">
-				</section>
 
-				<section>
+					<section>
+						<h2>2. White space and semicolons in JavaScript</h2>
+						<img src="images/semicolon.jpg">
+					</section>
+
 					<section data-transition="fade">
 						<p style="text-align: left">White space is ignored in JS.</p>
 						<p style="text-align: left">But a semicolon will be added at the end of a stand alone expression even if not intended.</p>
@@ -168,11 +177,12 @@ console.log(foo(2));
 				</section>
 
 				<section>
-					<h2>3. Hoisting</h2>
-					<img src="images/javascript_hoisting_explained.jpg">
-				</section>
 
-				<section>
+					<section>
+						<h2>3. Hoisting</h2>
+						<img src="images/javascript_hoisting_explained.jpg" width="30%">
+					</section>
+
 					<section data-transition="fade">
 						<p style="text-align: left">Behind the scenes, variable declarations are 'hoisted' to the top of the current scope.</p>
 						<p style="text-align: left">If the variable has been initialised then it will be set to <code>undefined</code> when it is 'hoisted'.</p>
@@ -249,11 +259,12 @@ var myFunction = function() {
 				</section>
 
 				<section>
-					<h2>3. Parameters</h2>
-					<img src="images/para.jpg" width="30%">
-				</section>
 
-				<section>
+					<section>
+						<h2>4. Parameters</h2>
+						<img src="images/para.jpg" width="30%">
+					</section>
+
 					<section data-transition="fade">
 						<p style="text-align: left">Passing named parameters to JS functions does what we might expect.</p>
 						<br>
@@ -265,9 +276,7 @@ var max = function(a, b) {
 }
 
 console.log(max(1, 3)); // 3
-
 console.log(max(4, 2)); // 4
-
 console.log(max(2, 6, 9)); // 6 (9 is ignored... or is it?)
 						</code></pre>
 					</section>
