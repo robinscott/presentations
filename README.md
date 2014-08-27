@@ -1,4 +1,4 @@
-javascript-ndc-2013
+Presentations
 ===================
 
-Presentation of 'JavaScript: Getting Your Feet Wet' from NDC conference 2013.
+Branches: presentation of 'JavaScript: Getting Your Feet Wet' from NDC conference 2013.
